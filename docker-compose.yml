@@ -2,8 +2,9 @@ version: "3.9"
 
 services:
   api:
-    build: .
-    container_name: myproject-
+    build:
+      context: .
+    container_name: myproject
     ports:
       - "8000:8000"
     volumes:
@@ -11,7 +12,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@db:5432/mydatabase
+      DATABASE_URL: postgres://alex:alex@db:5432/mydatabase
 
   db:
     image: postgres:15
@@ -21,22 +22,22 @@ services:
       - "5433:5432"
     environment:
       POSTGRES_DB: mydatabase
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: alex
+      POSTGRES_PASSWORD: alex
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: myproject2-pgadmin
-    restart: always
-    ports:
-      - "8080:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: admin123
-    depends_on:
-      - db
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin
+  #   restart: always
+  #   ports:
+  #     - "8080:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@example.com
+  #     PGADMIN_DEFAULT_PASSWORD: admin123
+  #   depends_on:
+  #     - db
 
 volumes:
   pgdata:
