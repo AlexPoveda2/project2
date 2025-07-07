@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+tortoise-orm
+asyncpg
+passlib[bcrypt]
+python-dotenv
+pydantic[email]
