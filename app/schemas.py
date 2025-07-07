@@ -5,6 +5,13 @@ class UserCreate(BaseModel):
     username: str
     password: str
 
+
 class UserLogin(BaseModel):
-    email: EmailStr
-    password: str
+    payload: str
+    nonce: str
+    tag: str
+
+class PayloadEncrypt(BaseModel):
+    payload: str
+    nonce: str
+    tag: str
